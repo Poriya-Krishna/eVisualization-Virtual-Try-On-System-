@@ -1,0 +1,31 @@
+{% extends 'store/main.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Ensure the CSS file is linked correctly -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+
+<div class="row">
+    {% for product in products%}
+    
+        <div class="col-lg-4">
+                <img class="thumbnail" src="{{product.image.url}}" height="170" width="300">
+                <div class="box-element product">
+                    <h6><strong>{{product.name}}</strong></h6>
+                    <hr>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart" style="font-size: 13px;">Add to Cart</button>
+                        &nbsp;
+                        <div style="padding-right: 80px;">
+                                <a class="btn btn-outline-success" href="#" style="font-size: 13px;">View</a></div>
+                        <h5 style="padding-right: 30px; padding-left: 5px;"><strong>${{product.price|floatformat:0}}</strong></h5>
+                    </div>
+                </div>
+                
+            </div>
+    {% endfor%}
+</div>
+
+
+
+{% endblock content %}
